@@ -1,0 +1,936 @@
+/* ------------------------------------ */
+/*                Core UI               */
+/* ------------------------------------ */
+:root {
+  --app-height: 100dvh;
+  --navigationHeight: 38px;
+}
+
+html {
+  background: black;
+  overflow: hidden;
+  height: var(--app-height);
+}
+
+body {
+  height: var(--app-height);
+  --externalTaskbarHeight: 0px;
+  --viewHeight: calc(
+    var(--app-height) - var(--navigationHeight) - var(--externalTaskbarHeight)
+  );
+  --miUiBackground: var(--color-cool-4);
+  --miUiBackgroundTransparent: #110e11ee;
+  width: 100vw;
+  overflow: clip;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+}
+
+/* Better loading */
+.chat-message {
+  background-color: #d8d7cc;
+}
+
+body.mobile-improvements {
+  height: calc(100% - var(--externalTaskbarHeight)) !important;
+  position: relative;
+}
+body.mobile-improvements.mi-window-controls-persistent {
+  --externalTaskbarHeight: 40px;
+  --viewHeight: calc(calc(var(--vh) * 100) - var(--navigationHeight) - 40px);
+}
+body.mobile-improvements.mi-window-controls-persistent.mi-window-controls-persistent-bottom {
+  top: 0 !important;
+}
+
+#chat-form--send {
+  display: none;
+}
+
+body.game.mobile-improvements :is(.app, .sidebar-tab) {
+  --sidebar-width: 100%;
+  background-color: var(--miUiBackgroundTransparent);
+}
+
+.mobile-improvements {
+  --sidebar-width: 100%;
+}
+.mobile-improvements #interface.theme-light {
+  --miUiBackground: #c1c1c1;
+  --miUiBackgroundTransparent: #c1c1c1ee;
+}
+@layer blocks.base {
+  .mobile-improvements .chat-log[hidden]:not([hidden=until-found]) {
+    display: block !important;
+    z-index: 200;
+  }
+}
+.mobile-improvements #ui-left,
+.mobile-improvements #ui-middle,
+.mobile-improvements #ui-right {
+  position: absolute;
+  width: 100vw;
+  height: var(--viewHeight) !important;
+  top: 0;
+  right: 0;
+}
+.mobile-improvements #ui-left {
+  z-index: 79;
+}
+.mobile-improvements #ui-right {
+  z-index: 80;
+  pointer-events: all;
+}
+.mobile-improvements #ui-middle {
+  z-index: 1000;
+}
+.mobile-improvements #sidebar {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+.mobile-improvements .sidebar-tab:not(.sidebar-popout) {
+  border-radius: 0;
+}
+.mobile-improvements #chat {
+  width: 100%;
+}
+.mobile-improvements #ui-right-column-1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.mobile-improvements #sidebar-content {
+  flex-shrink: 1;
+  width: 100%;
+  flex-grow: 1;
+  margin: 0;
+}
+.mobile-improvements #ui-right {
+  max-width: 340px;
+  transform: translateX(200%);
+}
+@media screen and (max-width: 650px) {
+  .mobile-improvements #ui-right {
+    max-width: 100vw;
+  }
+}
+.mobile-improvements.mobile-app #ui-right {
+  transform: translateX(0);
+}
+.mobile-improvements #sidebar-tabs {
+  background: var(--miUiBackground);
+  border-bottom: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  height: 100%;
+  opacity: 1;
+  padding: 0;
+  overflow-y: scroll;
+}
+.mobile-improvements #sidebar-tabs > menu {
+  gap: 0;
+}
+.mobile-improvements #sidebar-tabs .ui-control {
+  color: var(--color-text-secondary);
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  height: 40px;
+}
+.mobile-improvements #sidebar #sidebar-tabs .ui-control[aria-pressed=true] {
+  border: none;
+  box-shadow: none;
+  color: var(--color-warm-2);
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  background: black;
+}
+.mobile-improvements #sidebar #sidebar-tabs .ui-control[aria-pressed=true]::before {
+  transform: scale(1.2);
+}
+.mobile-improvements #sidebar #sidebar-tabs .collapse {
+  display: none;
+}
+.mobile-improvements #sidebar:not(.collapsed) {
+  display: flex !important;
+}
+.mobile-improvements #ui-top {
+  margin: 0 18px 0 120px;
+}
+.mobile-improvements #ui-top #scene-list {
+  min-width: 110px;
+}
+.mobile-improvements #players {
+  width: fit-content;
+}
+.mobile-improvements #players h3 {
+  margin: 0;
+}
+.mobile-improvements #players.mobile-hidden {
+  transform: translateX(-110%);
+}
+.mobile-improvements #hotbar {
+  height: auto;
+  width: 100%;
+  max-width: 610px;
+  background: var(--miUiBackground);
+  padding: 4px;
+  pointer-events: all;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  border-radius: 5px 5px 0 0;
+  transform: translateY(calc(100% + var(--navigationHeight)));
+  margin: 0;
+  opacity: 1;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  padding-bottom: 10px;
+}
+.mobile-improvements.show-hotbar #hotbar {
+  transform: translateY(0);
+}
+.mobile-improvements #hotbar .bar-controls {
+  background: none;
+  border: none;
+  margin: 0;
+  justify-content: space-evenly;
+  max-height: max(60px, 100% - 36px);
+  box-shadow: none;
+}
+.mobile-improvements #hotbar #action-bar {
+  height: auto;
+  max-width: 100%;
+  flex-shrink: 1;
+}
+.mobile-improvements #hotbar #macro-list {
+  flex: 1;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em 0;
+  gap: 1px;
+  grid-template-columns: repeat(10, var(--macro-size));
+}
+@media screen and (max-width: 600px) {
+  .mobile-improvements #hotbar #macro-list {
+    grid-template-columns: repeat(5, 50px);
+    gap: 4px;
+  }
+}
+.mobile-improvements #hotbar .macro {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.mobile-improvements #hotbar .bar-controls a.page-control,
+.mobile-improvements #hotbar .bar-controls span.page-number {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mobile-improvements #hotbar .bar-controls #bar-toggle {
+  display: none;
+}
+.mobile-improvements #notifications {
+  width: calc(100% - 12px);
+  left: 6px;
+}
+.mobile-improvements .notification {
+  background: rgba(0, 0, 0, 0.9);
+}
+.mobile-improvements .notification.info {
+  background: rgba(47, 80, 132, 0.9);
+}
+.mobile-improvements .notification.warning {
+  background: rgba(214, 150, 0, 0.9);
+}
+.mobile-improvements .notification.error {
+  background: rgba(105, 0, 8, 0.9);
+}
+.mobile-improvements #loading {
+  width: 100%;
+}
+.mobile-improvements #loading #context {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 60px);
+}
+.mobile-improvements #chat-form {
+  display: flex;
+  align-items: end;
+  height: 60px;
+  flex: 0 0 60px;
+}
+.mobile-improvements section.chat-sidebar .jump-to-bottom > a {
+  width: 100%;
+}
+.mobile-improvements #chat-message {
+  margin: 0;
+  min-height: auto;
+}
+.mobile-improvements #chat-form--send {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  flex-shrink: 0;
+  align-self: end;
+}
+@media screen and (max-width: 450px) {
+  .mobile-improvements #pause {
+    transform: scale(0.85);
+  }
+}
+@keyframes bloopborder {
+  0% {
+    border-color: #00c853;
+  }
+  80% {
+    border-color: #76ff03;
+  }
+  100% {
+    border-color: #6f6c66;
+  }
+}
+.mobile-improvements .chat-message.bloop {
+  animation-name: bloopborder;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+}
+
+#settings {
+  overflow-y: scroll;
+}
+
+#settings-config .sidebar-toggle {
+  flex-grow: 0;
+  background: rgba(125, 125, 125, 0.26);
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 10px;
+  margin-right: 5px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -17px;
+}
+
+.app.sidebar-popout .directory-list {
+  max-height: initial;
+}
+
+.app.filepicker form {
+  max-height: 100%;
+}
+.app.filepicker .filepicker-body {
+  overflow: hidden;
+  flex-grow: 1;
+}
+.app.filepicker .tiles-list {
+  grid-template-columns: repeat(auto-fit, 100px);
+  width: calc(100% + 4px);
+  flex-shrink: 2;
+}
+
+.window-app.image-popout .form-group {
+  position: unset;
+}
+
+.window-app.image-popout .form-group.title {
+  flex: 0 1;
+  order: 1;
+  margin: 0 auto 5px auto;
+}
+
+.window-app.image-popout .lightbox-image {
+  order: 2;
+  flex: 1;
+}
+
+.window-app.image-popout .form-group.picker {
+  order: 3;
+  flex: 0 1;
+  margin: 5px auto 0 auto;
+}
+
+.window-app .window-header {
+  max-width: 100vw;
+  overflow-x: auto;
+}
+
+.window-app .window-header .window-title {
+  margin: 0;
+  word-break: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ------------------------------------ */
+/*               Hide UI                */
+/* ------------------------------------ */
+#ui-left,
+#ui-right,
+#ui-center,
+#sidebar,
+#controls,
+#navigation,
+#hotbar,
+#players,
+#logo,
+#show-mobile-navigation {
+  transition: transform 100ms ease-out;
+}
+
+.mobile-improvements.hide-hud #sidebar, .mobile-improvements.mobile-map #sidebar {
+  transform: translateX(300px);
+}
+.mobile-improvements.mobile-app #controls, .mobile-improvements.hide-hud #controls {
+  transform: translateX(-200%);
+}
+.mobile-improvements.windows-open #navigation, .mobile-improvements.mobile-app #navigation, .mobile-improvements.hide-hud #navigation {
+  transform: translateY(-200%);
+}
+.mobile-improvements.mobile-app #players, .mobile-improvements.hide-hud #players {
+  transform: translateX(-200%);
+}
+.mobile-improvements.hide-hud #hotbar {
+  transform: translateY(200%);
+}
+.mobile-improvements.hide-hud #logo {
+  transform: scale(0.5) translateX(-50%) translateY(-50%);
+}
+.mobile-improvements.mobile-app #logo {
+  transform: scale(0.5) translateX(-60%) translateY(-60%);
+}
+.mobile-improvements.hide-hud .window-selector.has-items {
+  transform: translateY(calc(100% + 60px));
+}
+.mobile-improvements.hide-hud .mobile-navigation {
+  transform: translateY(calc(100% + 20px));
+}
+.mobile-improvements.hide-hud .mobile-menu, .mobile-improvements.hide-hud .window-selector {
+  transform: translateY(calc(100% + var(--navigationHeight) + 20px));
+}
+.mobile-improvements.hide-hud #show-mobile-navigation {
+  transform: translateY(0);
+}
+
+/* ------------------------------------ */
+/*              Application             */
+/* ------------------------------------ */
+.mobile-improvements .app {
+  background: var(--miUiBackgroundTransparent);
+  border-radius: 0;
+}
+.mobile-improvements .app form .form-fields select {
+  width: 100%;
+}
+.mobile-improvements #client-settings section.content {
+  flex-grow: 9999;
+}
+.mobile-improvements .application.wm-managed {
+  height: var(--viewHeight) !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin: 0;
+  min-height: var(--viewHeight) !important;
+  overflow-x: auto;
+  width: calc(100% - 300px) !important;
+  min-width: calc(100% - 300px) !important;
+  box-shadow: none;
+  transition: transform 100ms ease;
+  border-radius: 0;
+}
+.mobile-improvements .application.wm-managed.minimizing, .mobile-improvements .application.wm-managed.minimized {
+  transform: translateY(calc(100% + 50px));
+}
+@media screen and (max-width: 900px) {
+  .mobile-improvements .application.wm-managed {
+    --zoomValue: 1;
+    width: 100% !important;
+    min-width: 100% !important;
+    overflow: hidden;
+  }
+  .mobile-improvements .application.wm-managed .window-zoom-slider {
+    flex: 0 0 30px;
+    position: fixed;
+    top: 30px;
+    z-index: 10;
+    width: 100vw;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .mobile-improvements .application.wm-managed .window-zoom-slider * {
+    margin: 0 8px;
+  }
+  .mobile-improvements .application.wm-managed .window-zoom-slider .toggle {
+    flex: 0 0 20px;
+    padding: 4px 0 0;
+  }
+  .mobile-improvements .application.wm-managed .window-content {
+    width: calc(100% / var(--zoomValue)) !important;
+    min-width: calc(100% / var(--zoomValue)) !important;
+    min-height: calc(100% / var(--zoomValue) - 30px) !important;
+    transform: scale(var(--zoomValue));
+    transform-origin: top left;
+  }
+}
+.mobile-improvements:not(.mi-window-controls) .window-app, .mobile-improvements.mi-window-controls .window-app:not(.minimized) {
+  height: var(--viewHeight) !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin: 0;
+  min-height: var(--viewHeight) !important;
+  overflow-x: auto;
+  width: calc(100% - 300px) !important;
+  min-width: calc(100% - 300px) !important;
+  box-shadow: none;
+  transition: transform 100ms ease;
+}
+@media screen and (min-width: 900px) {
+  .mobile-improvements:not(.mi-window-controls) .window-app .header-button.control.zoom, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .header-button.control.zoom {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .mobile-improvements:not(.mi-window-controls) .window-app, .mobile-improvements.mi-window-controls .window-app:not(.minimized) {
+    --zoomValue: 1;
+    width: 100% !important;
+    min-width: 100% !important;
+    overflow: hidden;
+  }
+  .mobile-improvements:not(.mi-window-controls) .window-app .window-zoom-slider, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .window-zoom-slider {
+    flex: 0 0 30px;
+    position: fixed;
+    top: 30px;
+    z-index: 10;
+    width: 100vw;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .mobile-improvements:not(.mi-window-controls) .window-app .window-zoom-slider *, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .window-zoom-slider * {
+    margin: 0 8px;
+  }
+  .mobile-improvements:not(.mi-window-controls) .window-app .window-zoom-slider .toggle, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .window-zoom-slider .toggle {
+    flex: 0 0 20px;
+    padding: 4px 0 0;
+  }
+  .mobile-improvements:not(.mi-window-controls) .window-app .window-content, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .window-content {
+    width: calc(100% / var(--zoomValue)) !important;
+    min-width: calc(100% / var(--zoomValue)) !important;
+    min-height: calc(100% / var(--zoomValue) - 30px) !important;
+    transform: scale(var(--zoomValue));
+    transform-origin: top left;
+  }
+}
+.mobile-improvements:not(.mi-window-controls) .window-app .window-content, .mobile-improvements.mi-window-controls .window-app:not(.minimized) .window-content {
+  display: flex !important;
+}
+.mobile-improvements .window-app .window-resizable-handle {
+  display: none;
+}
+.mobile-improvements:not(.mi-window-controls) .minimized {
+  transform: translateY(calc(100% + 50px));
+}
+.mobile-improvements .window-app.dialog {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8666666667);
+}
+.mobile-improvements .window-app.dialog .window-content {
+  flex-grow: 0;
+  flex-basis: auto;
+}
+.mobile-improvements .window-app.dialog .window-header {
+  background: var(--miUiBackgroundTransparent);
+  font-size: 110%;
+  font-weight: bold;
+}
+.mobile-improvements .dialog .dialog-content {
+  overflow: auto;
+  flex: 0 1 auto;
+}
+.mobile-improvements .dialog .dialog-buttons {
+  flex: none;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------------ */
+/*        Mobile Improvement Apps       */
+/* ------------------------------------ */
+#mobile-improvements-about {
+  max-height: 260px;
+}
+#mobile-improvements-about .window-content {
+  padding: 30px;
+}
+#mobile-improvements-about .window-content div {
+  text-align: center;
+}
+#mobile-improvements-about .window-content div ul {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-improvements #mobile-improvements-toggle {
+  display: none;
+}
+
+.drawer {
+  z-index: 1000;
+  position: fixed;
+  bottom: var(--navigationHeight);
+  width: 100%;
+  max-width: 450px;
+  right: 0;
+  transform: translateY(calc(100% + 60px));
+  transition: transform ease-out 100ms;
+  visibility: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+.mi-window-controls-persistent-bottom .drawer {
+  bottom: calc(var(--navigationHeight) + var(--externalTaskbarHeight));
+  transform: translateY(calc(100% + 60px + var(--externalTaskbarHeight)));
+}
+
+.mobile-improvements .drawer {
+  visibility: unset;
+}
+
+.drawer.open {
+  z-index: 1001;
+  transform: translateY(0);
+}
+
+.window-selector nav {
+  width: 100%;
+  padding: 0 1em;
+  background: var(--miUiBackground);
+  max-height: calc(100vh - var(--navigationHeight));
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 450px) {
+  .window-selector nav {
+    border-width: 1px 0px 0px 0px;
+  }
+}
+.window-selector .window-list {
+  padding: 0;
+}
+
+.window-selector .window-row {
+  display: flex;
+  margin-bottom: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2078431373);
+}
+
+.window-selector .window-row:hover {
+  box-shadow: 0 0 3px #000;
+}
+
+.window-selector .window-list .window-close {
+  width: 2.5em;
+  max-width: 2.5em;
+  text-align: center;
+}
+
+.window-selector .window-list .window-close:hover {
+  text-shadow: 0 0 8px red;
+}
+
+.window-selector button {
+  justify-content: start;
+  background: none;
+  border: none;
+  color: #f0f0e0;
+  border-radius: 0;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  line-height: 30px;
+}
+
+.window-selector button:hover {
+  box-shadow: none;
+}
+
+.window-selector button i {
+  margin: 0;
+}
+
+.window-selector .minimize-all {
+  text-align: center;
+}
+
+.display-modes-toggle {
+  z-index: 1;
+  position: absolute;
+  right: 5px;
+  top: 380px;
+  width: 30px;
+  height: 30px;
+  font-size: 90%;
+  line-height: 1.6em;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #000;
+  text-align: center;
+  font-weight: bold;
+  background: var(--miUiBackgroundTransparent);
+  color: #f0f0e0;
+  box-shadow: 0 0 20px #000;
+  cursor: pointer;
+  border-radius: 3px;
+  pointer-events: auto;
+}
+
+.display-modes-toggle i {
+  margin: 0;
+}
+
+.mobile-navigation {
+  display: none !important; /* Spawns before CSS with inline style */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 1002;
+  background-color: var(--miUiBackground);
+  position: absolute;
+  bottom: 0;
+  align-items: stretch;
+  transition: transform ease-in 50ms;
+  list-style: none;
+  color: #f0f0e0;
+  font-weight: normal;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-navigation li {
+  height: var(--navigationHeight);
+  flex: 1;
+  padding: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.mobile-navigation li i {
+  font-size: 120%;
+}
+
+.mobile-navigation li.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.mobile-navigation li .count {
+  border-radius: 100%;
+  padding: 0 4px;
+  display: inline-flex;
+  background: #222;
+  margin-left: -5px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-navigation li:hover,
+.mobile-navigation li:focus,
+.mobile-navigation li:active {
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mobile-navigation li.active,
+.mobile-navigation li.active:hover,
+.mobile-navigation li.active:focus,
+.mobile-navigation li.active:active {
+  opacity: 1;
+}
+
+.mobile-navigation li.active:not(.toggle) {
+  color: var(--color-text-hyperlink);
+}
+
+.mobile-navigation li.active:not(.toggle) i {
+  transform: scale(1.1);
+}
+
+#show-mobile-navigation {
+  color: #f0f0e0;
+  z-index: 69;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: var(--viewHeight);
+  background: var(--miUiBackground);
+  height: 25px;
+  width: 25px;
+  font-size: 110%;
+  border-radius: 100%;
+  left: 12px;
+  transform: translateY(200%);
+}
+
+.mobile-improvements .mobile-navigation {
+  display: flex !important;
+}
+
+.mobile-menu {
+  display: flex !important;
+  margin: 0;
+  padding: 0;
+  background-color: var(--miUiBackground);
+  align-items: stretch;
+  list-style: none;
+  color: #f0f0e0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.mobile-menu .menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+}
+
+.mobile-menu .menu-list > li {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.mobile-menu .menu-list > li i.fas {
+  margin-right: 5px;
+  width: 20px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+@keyframes pop-in-bubble {
+  0% {
+    transform: scale(0.8);
+    translate: 20%;
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    translate: 0%;
+    opacity: 1;
+  }
+}
+#mobile-chat-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--viewHeight);
+  z-index: 1001;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  padding: 0.6em;
+  gap: 0.5em;
+  overflow: hidden;
+}
+#mobile-chat-bubbles .mi-chat-bubble {
+  background: var(--miUiBackground);
+  color: var(--color-text-light-1);
+  width: 200px;
+  max-width: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.5em;
+  padding: 0.6em 0.8em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  background: var(--color-cool-5-90);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: pop-in-bubble 0.1s;
+  pointer-events: all;
+  /* Default dice html */
+}
+#mobile-chat-bubbles .mi-chat-bubble .dice-roll .dice-flavor,
+#mobile-chat-bubbles .mi-chat-bubble .flavor {
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: 0.4em;
+}
+#mobile-chat-bubbles .mi-chat-bubble .dice-total::before,
+#mobile-chat-bubbles .mi-chat-bubble .dice-total::after {
+  display: none;
+}
+#mobile-chat-bubbles .mi-chat-bubble .dice-roll .dice-formula,
+#mobile-chat-bubbles .mi-chat-bubble .dice-roll .dice-total {
+  box-shadow: none;
+  border: none;
+  background: rgba(38, 38, 38, 0.8);
+}
+#mobile-chat-bubbles .mi-chat-bubble .table-results {
+  padding: 0;
+}
+#mobile-chat-bubbles .mi-chat-bubble .table-result {
+  align-items: center;
+  gap: 0.6em;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+#mobile-chat-bubbles .mi-chat-bubble .result-image {
+  width: 40px;
+  flex-grow: 0;
+  border: none;
+}
+#mobile-chat-bubbles .mi-chat-bubble .content-link {
+  background: rgba(38, 38, 38, 0.4392156863);
+}
+#mobile-chat-bubbles .mi-chat-bubble * {
+  border-color: rgb(38, 38, 38);
+}
+
+/* Module compatibility */
+.mobile-improvements .gm-screen-app {
+  display: none !important;
+}
+.mobile-improvements #dice-box-canvas {
+  z-index: 81;
+  width: 100% !important;
+  height: var(--viewHeight) !important;
+}
+.mobile-improvements #touch-vtt-controls button {
+  max-width: 72px;
+}
+.mobile-improvements #tokenizer > div {
+  flex-wrap: wrap;
+  justify-content: center;
+}

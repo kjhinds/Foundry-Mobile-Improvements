@@ -1,0 +1,103 @@
+/* ------------------------------------ */
+/*             sfrpg system             */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/*               Sheets                 */
+/* ------------------------------------ */
+@media screen and (max-width: 700px) {
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .attributes .attribute-name {
+    margin: 0;
+    font-size: 2vw;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .attributes .attribute-value span {
+    font-size: 3.5vw !important;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .attributes .attribute-value-max {
+    font-size: 3.5vw !important;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .summary li {
+    font-size: 3vw;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .image-container {
+    flex: 1 !important;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details {
+    flex: 5;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .charname input {
+    font-size: 5vw;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .charlevel {
+    flex: 1 !important;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .charlevel .level label {
+    font-size: 5vw;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .charlevel .experience input {
+    width: 50%;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .summary-row1, .mobile-improvements .sfrpg.sheet.actor .sheet-header .header-details .summary-row2 {
+    font-size: 3vw;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .stacked.conditions > * {
+    flex: unset !important;
+    width: 120px;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew .item-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item .item-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew .item-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item .item-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew .item-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item .crew-name.modifier-name,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item .item-name.modifier-name {
+    flex: 3;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew-detial,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item-detail,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew-detial,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item-detail,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew-detial,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item-detail {
+    overflow: hidden;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew-detial.modifier-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item-detail.modifier-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew-detial.modifier-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item-detail.modifier-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew-detial.modifier-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item-detail.modifier-type {
+    flex: 2;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew-detial.modifier-effect-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item-detail.modifier-effect-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew-detial.modifier-effect-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item-detail.modifier-effect-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew-detial.modifier-effect-type,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item-detail.modifier-effect-type {
+    flex: 2;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .crew-detial.modifier-value-affected,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .crew-list .item-detail.modifier-value-affected,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .crew-detial.modifier-value-affected,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .inventory-list .item-detail.modifier-value-affected,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .crew-detial.modifier-value-affected,
+  .mobile-improvements .sfrpg.sheet.actor .modifiers-body .vehicle-system-list .item-detail.modifier-value-affected {
+    flex: 2;
+  }
+}
+@media screen and (max-width: 480px) {
+  .mobile-improvements .sfrpg.sheet.actor ul.skills-list li.skills-header > * {
+    overflow: hidden;
+  }
+  .mobile-improvements .sfrpg.sheet.actor ul.skills-list li.skill h4.skill-name {
+    flex: 0 0 40%;
+  }
+  .mobile-improvements .sfrpg.sheet.actor .traits label {
+    flex: 3;
+  }
+}

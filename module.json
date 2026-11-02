@@ -1,0 +1,37 @@
+{
+  "id": "mobile-improvements",
+  "name": "mobile-improvements",
+  "title": "Mobile Improvements",
+  "description": "Mobile Improvements improves usability on smaller screen sizes.",
+  "version": "2.0.0",
+  "authors": [{"name": "Sunspots", "url": "https://gitlab.com/sunspots"}],
+  "scripts": [],
+  "esmodules": ["mobile-improvements.js"],
+  "relationships": {
+    "requires": [
+      {"id": "touch-vtt", "type": "module"},
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {"minimum": "1.13.0.0", "verified": "1.13.3.0"}
+      }
+    ]
+  },
+  "styles": [
+    {"src": "./mobile-improvements.css", "layer": null},
+    "./dnd5e.css",
+    "./pf2e.css",
+    "./gurps.css",
+    "./sfrpg.css"
+  ],
+  "packs": [],
+  "languages": [{"lang": "en", "name": "English", "path": "lang/en.json"}],
+  "compatibility": {"minimum": "13.336", "verified": "13.344"},
+  "url": "https://gitlab.com/fvtt-modules-lab/mobile-improvements",
+  "manifest": "https://gitlab.com/fvtt-modules-lab/mobile-improvements/-/jobs/artifacts/master/raw/module.json?job=build-release",
+  "download": "https://gitlab.com/fvtt-modules-lab/mobile-improvements/-/jobs/artifacts/v2.0.0/raw/mobile-improvements-v2.0.0.zip?job=build-release",
+  "license": "MIT",
+  "readme": "https://gitlab.com/fvtt-modules-lab/mobile-improvements",
+  "bugs": "https://gitlab.com/fvtt-modules-lab/mobile-improvements/-/issues",
+  "changelog": ""
+}

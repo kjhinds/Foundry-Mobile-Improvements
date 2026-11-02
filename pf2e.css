@@ -1,0 +1,78 @@
+/* ------------------------------------ */
+/*             pf2e system             */
+/* ------------------------------------ */
+/* ------------------------------------ */
+/*               Sheets                 */
+/* ------------------------------------ */
+@media screen and (max-width: 700px) {
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content .sheet-body .sheet-content > .tab.active.character .subsection.details .abcd {
+    grid-template-columns: 100%;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content .sheet-body .sheet-content > .tab.active.character .subsection.details .abcd .traits {
+    grid-column: unset;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form nav.sheet-navigation {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content .sheet-body .sheet-content > .tab.active.character .subsection.attributes ul {
+    grid-template-columns: repeat(auto-fill, 60px);
+  }
+}
+@media screen and (max-width: 580px) {
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style {
+    grid: "sidebar" 35% "header" 60px "nav" min-content "content";
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style aside {
+    margin-left: 0;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style aside img.logo {
+    display: none;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style aside .sidebar {
+    margin-bottom: 0;
+    box-shadow: inset 0px -4px 10px 0px rgba(0, 0, 0, 0.5490196078);
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style aside, .mobile-improvements.system-pf2e .sheet.actor.character .window-content form.crb-style header.char-header {
+    background: url(../../systems/pf2e/assets/sheet/header.webp);
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.npc .sheet-body .top-sections {
+    display: block;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.npc nav.sheet-tabs > [data-tab] {
+    padding: 0;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.npc form > .npc-body > header .name {
+    flex-wrap: wrap;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor.npc form > .npc-body > header .name .name-value {
+    flex: 1 0 80%;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor section.window-content .item-image {
+    display: none;
+  }
+}
+@media screen and (max-width: 480px) {
+  .mobile-improvements .pf2e.sheet.actor:not(.simple) form {
+    flex-direction: column;
+  }
+  .mobile-improvements .pf2e.sheet.actor:not(.simple) form .sidebar {
+    flex: 1 0 30%;
+    box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.25);
+  }
+  .mobile-improvements .pf2e.sheet.actor:not(.simple) section.window-content .image-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  .mobile-improvements .pf2e.sheet.actor:not(.simple) section.window-content .image-container img {
+    max-height: 100%;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor .window-content .inventory .inventory-list .item-controls,
+  .mobile-improvements.system-pf2e .sheet.actor .window-content .inventory ul.items .item-controls {
+    flex-basis: unset;
+  }
+  .mobile-improvements.system-pf2e .sheet.actor .window-content .crb-style .sheet-body .sheet-content > .tab.active.proficiencies ul.proficiencies-list {
+    grid-template-columns: 100%;
+  }
+}

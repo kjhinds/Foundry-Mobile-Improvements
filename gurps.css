@@ -1,0 +1,100 @@
+/* ------------------------------------ */
+/*             gurps system             */
+/* ------------------------------------ */
+@media screen and (max-width: 1100px) {
+  .mobile-improvements.system-gurps #modttt {
+    left: 0 !important;
+    max-width: 100%;
+    max-height: calc(100% - 90px);
+    overflow: auto;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .mobile-improvements.system-gurps .modifier-row {
+    font-size: 8pt;
+  }
+  .mobile-improvements.system-gurps .modifier-row .glinkmodminus {
+    text-wrap: nowrap;
+  }
+  .mobile-improvements.system-gurps #modttt #modtooltip {
+    grid-template-columns: unset;
+    grid-template-rows: 2fr 4fr;
+  }
+  .mobile-improvements.system-gurps #modttt #modtooltipbucket {
+    grid-template-rows: unset;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .mobile-improvements.system-gurps #modttt #modtooltipbucket div {
+    grid-row: unset;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mobile-improvements.system-gurps .modifier-row .glinkmodminus {
+    text-wrap: nowrap;
+  }
+  .mobile-improvements.system-gurps #bucket-app {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+  }
+}
+
+/* ------------------------------------ */
+/*               Sheets                 */
+/* ------------------------------------ */
+.mobile-improvements {
+  /*** Full and combat sheets ***/
+  /*** Simple sheet **/
+  /*** NPC/mini sheet **/
+  /*** Tabbed sheet ***/
+  /*** Reduced mode ***/
+}
+@media screen and (max-width: 700px) {
+  .mobile-improvements .gurps.sheet.actor {
+    z-index: 1000 !important;
+  }
+  .mobile-improvements .gurps.sheet.actor #stats {
+    grid-template: "attributes hp-fp" "attributes condition" "attributes condition" "location encumbrance" "location qnotes" "location lifting";
+  }
+}
+@media screen and (max-width: 600px) {
+  .mobile-improvements .gurps.sheet.actor #personal {
+    grid-template: "portrait identity identity points" "portrait miscellaneous miscellaneous points" "description description description description";
+  }
+  .mobile-improvements .gurps.sheet.actor #combat-grid {
+    grid-template: "combat-attrs combat-attrs location" "combat-attrs combat-attrs location" "combat-hitfat combat-hitfat location" "encumbrance encumbrance encumbrance" "condition condition condition" "condition condition condition";
+  }
+  .mobile-improvements .navigate-container {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 400px) {
+  .mobile-improvements .gurps.sheet.actor #combat-attrs .label {
+    white-space: normal;
+  }
+}
+.mobile-improvements .gurps.sheet.actor .simple_form .simple_Portrait {
+  overflow: hidden;
+}
+@media screen and (max-width: 680px) {
+  .mobile-improvements .gurps.sheet.actor .simple_form .simple_container {
+    grid-template-areas: "ST ST ST-desc Portrait Portrait" "DX DX DX-desc Portrait Portrait" "IQ IQ IQ-desc Portrait Portrait" "HT HT HT-desc Portrait Portrait" "Shield Body Heart Notes Notes" "Shield Body Heart Notes Notes" "Shield Body Heart Notes Notes" "Defend Armor HP Notes Notes" "Attacks Attacks Attacks Skills Skills" "Attacks Attacks Attacks Skills Skills" "Attacks Attacks Attacks Skills Skills" "Attacks Attacks Attacks Skills Skills" "Attacks Attacks Attacks Skills Skills" "Eqt Eqt Eqt Ads Ads" "Eqt Eqt Eqt Ads Ads" "Eqt Eqt Eqt Ads Ads" "Eqt Eqt Eqt Ads Ads";
+  }
+  .mobile-improvements .gurps.sheet.actor .simple_form .simple_ST-desc > label:not(.rollable), .mobile-improvements .gurps.sheet.actor .simple_form .simple_DX-desc > label:not(.rollable), .mobile-improvements .gurps.sheet.actor .simple_form .simple_IQ-desc > label:not(.rollable), .mobile-improvements .gurps.sheet.actor .simple_form .simple_HT-desc > label:not(.rollable) {
+    display: none;
+  }
+}
+@media screen and (max-width: 800px) {
+  .mobile-improvements.system-gurps .sheet.actor .npc-sheet .npc-sheet-grid-container-ci {
+    grid-template-columns: 2fr 3fr 5fr;
+  }
+}
+.mobile-improvements .gurps.sheet.actor .gurps-sheet-tabs {
+  height: auto;
+}
+@media screen and (max-width: 580px) {
+  .mobile-improvements .gurps.sheet.actor .reducedMode #stats {
+    grid-template: "attributes attributes" "attributes attributes" "attributes attributes" "hp-fp hp-fp" "hp-fp hp-fp" "hp-fp hp-fp";
+  }
+}
